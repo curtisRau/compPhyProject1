@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B9D653A31C5AAA30002885CF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B9D653A21C5AAA30002885CF /* main.cpp */; };
+		B9D653AB1C5AB956002885CF /* linearTools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B9D653A91C5AB956002885CF /* linearTools.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		B9D6539F1C5AAA30002885CF /* project1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = project1; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D653A21C5AAA30002885CF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		B9D653A91C5AB956002885CF /* linearTools.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = linearTools.cpp; sourceTree = "<group>"; };
+		B9D653AA1C5AB956002885CF /* linearTools.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = linearTools.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				B9D653A21C5AAA30002885CF /* main.cpp */,
+				B9D653AA1C5AB956002885CF /* linearTools.hpp */,
+				B9D653A91C5AB956002885CF /* linearTools.cpp */,
 			);
 			path = project1;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9D653AB1C5AB956002885CF /* linearTools.cpp in Sources */,
 				B9D653A31C5AAA30002885CF /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,6 +243,7 @@
 				B9D653A81C5AAA30002885CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

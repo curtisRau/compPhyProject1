@@ -85,7 +85,7 @@ int main(int argc, const char* argv[]) {       // "int *" is the number of strin
     
     delete [] a;
     delete [] b;
-    free(c);
+    delete [] c;
     
     //std::cout << " Here comes the data";                    // For debugging purposes
     
@@ -96,9 +96,9 @@ int main(int argc, const char* argv[]) {       // "int *" is the number of strin
         //std::cout << u[i] << "\r";                    // For debugging purposes
     }
     
-    free(f);
-    free(cStar);
-    free(fStar);
+    delete [] f;
+    delete [] cStar;
+    delete [] fStar;
     
     std::cout << "Total computation time [s] = " << float( clock () - begin_time ) /  CLOCKS_PER_SEC << "\r";
     
@@ -112,8 +112,7 @@ int main(int argc, const char* argv[]) {       // "int *" is the number of strin
         std::cout << "\r";
     }
     
-    
-    free(u);
+    delete [] u;
     
     return 0;
 }
