@@ -1,0 +1,70 @@
+%"/usr/texbin/pdflatex" -synctex=1 -interaction=nonstopmode -enable-write18 %.tex
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+\usepackage{float}													% for controlling the position of objects ie. tables
+
+\usepackage[small, bf]{caption}								%Adjust caption size of figures, tables, pictures...
+\setlength{\captionmargin}{15pt}
+
+\usepackage{graphicx}											% Use pdf, png, jpg, or epsÂ§ with pdflatex; use eps in DVI
+\graphicspath{{images/}{OpticalLayout/}{ElectricalLayout/}}				% folder where images are stored in current directory
+
+\usepackage{tikz}													% For creating graphics and figures
+\usetikzlibrary{arrows}
+\usetikzlibrary{decorations.pathmorphing}
+
+\usepackage{mathrsfs}	% Curly E for electric field
+
+% --------------------------- Code for placing two figure side by side ---------------------------------------------------------------------------------
+\usepackage{caption}
+\usepackage{subcaption}
+
+% --------------------------- Code for the bibliography ---------------------------------------------------------------------------------
+\usepackage{natbib}												% For fancy in-text citations
+\bibliographystyle{plain}
+
+\author{Curtis Rau}
+\title{Wavelength Tunable Optical Second Harmonic Generation Suitable For Use With The LIGO Squeezer}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{LIGO-P1500246-v1}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+The purpose of this experiment was to construct an Optical Second Harmonic Generator (SHG) for advanced LIGO suitable for use with the Squeezer System.  The performance of the advanced LIGO interferometers will be fundamentally limited by Shot Noise.  One way of reducing shot noise in the output of the interferometer is to squeeze the vacuum state of the electromagnetic field the interferometer sees at its antisymmetric port.  Second harmonic generation is necessary for the production of squeezed light.  This paper touches upon the theory of squeezing, second harmonic generation, resonant optical cavities, higher-order modes in those cavities, and the Pound-Drever-Hall method.  DISCLAIMER: This is only a draft.  I have postponed the completion of this paper until after I have applied for graduate school.  It has not been peer reviewed.
+
+%-This paper will begin by reviewing second harmonic generation's role in aLIGO
+%-This paper will cover the theory required to understand the process of second harmonic generation
+%-The main focus of this paper will be giving and overview of this experiment so as to streamline the process for future experimenters.
+%-will include tips and tricks to trouble shoot and optimize a SHG.
+%-end with results from my go at it.
+%-a roughly concentric resonator cavity housed a PPKTP crystal
+%-employing temperature control
+%-employing the PDH method with a twist
+%-we lock onto the laser frequency 
+%-what will this be used for?
+blah
+\end{abstract}
+
+%\begin{multicols}{2}
+
+
+
+% -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+% -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\section{Second Harmonic Light in aLIGO}
+The interferometers implemented in advanced LIGO have a free spectral range that is much more stable than the frequency of the laser used to drive them (is this correct?).  Thus they reject (via reflection) much of the classical noise the laser produces such as thermal and Josephson noise.  The quantum noise contained in the output light from the interferometer, then, does not come from the laser, but rather stems from vacuum fluctuations which enter the antisymmetric port of the interferometer.  The noise comes in two conjugate forms: radiation pressure and photon counting error.  When the laser field and zero-point fluctuations are superimposed and impinge on one of the quasi-free-falling optics they perturb its position.  This is the radiation pressure noise which scales with input power.  When the signal leaves the interferometer it is recorded by a photodiode.  Because photons are quantized, the act of measuring optical power is really an act of counting.  This subjugates the interferometer signal to Poisson Counting Statistics where the relative standard deviation or specifically the uncertainty in the number of photons goes as $\sqrt{n}$.  This source of error is known as \textit{shot noise}, and it becomes increasingly problematic when output power is low.  Originally shot noise was thought to arise from fluctuations in the input power, but Caves showed shot noise also is a product of vacuum fluctuations entering the antisymmetric port \citep{Caves}.  The zero-point fluctuations mix with the signal field produced at the beamsplitter giving rise to shot noise \cite{LIGOSqueezer}.  Shot noise is particularly relevant because the LIGO interferometers are operated on a dark fringe.  Because one noise source dominates when optical power is high while the other dominates as it approaches zero, it stands to reason there would be some optimum amount of power such that the combined error from both sources (quadrature sum of these errors) is minimized.  This occurs when the error in each conjugate noise source is equal, and the optimum power is given by equation \ref{eqn:opt. power}.
+
+\end{document}

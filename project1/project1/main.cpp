@@ -1,4 +1,3 @@
-//
 //  main.cpp
 //  computationalPhysics1
 //
@@ -9,108 +8,117 @@
 #include <iostream>
 #include <new>          // Is this necessary?
 #include <math.h>       /* exp squt */
+#include "linearTools.hpp"
 
 // Declare Functions Here
-double source (double x)
-{
-    return 10 * exp (-10 * x);
-}
-
-double solution (double x)
-{
-    return 0.1 * (
-                  exp(-10 * x) +
-                  (1 - exp(-10)) * x -
-                  1
-                  );
-}
+double source (double x) {
+    return 10.0 * exp (-10.0 * x);
+};
 
 
-int main(int argc, const char* argv[]) {       // "int *" is the number of strings pointed to by the argument vector "constant char *"
+int main(int argc, const char* argv[]) {
+    // Using the flag "-plot" plots the results in the terminal.
+    
+        // BEGINNING CODE COMMON TO BOTH METHODS (DO NOT COMMENT OUT)
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+    const int N = std::stoi(argv[1]);          // takes the first argument, converts it to an integer, and stores it as "n".
+                                                    // N is the number of points, including end points
+    double L = 1.0;                                 // The length of the sample;
+    double h = L / (N-1);                           // The step size;
+    
+// Setup solution vector "u"
+    double* u = new double[N];
+
+    
+        // CODE FOR GENERAL SOLVER
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+////-------------------------------------------------------------------------------------------------------------------------------------------------------------// Setup source vector "f"
+//    double* f = new double[N-2];
+//    f[0] = -source(1*h) * (h*h) - 0;
+//    for (int i = 1; i < N-3; i++) {
+//        f[i] = -source((i+1) * h) * (h*h);
+//    }
+//    f[N-3] = -source((N-2) * h) * (h*h) - 0;
+//    
+//    const clock_t begin_time = std::clock();
+//    
+//// Boundary conditions:
+//    u[0] = 0.0;                   //The solution at x=0
+//    u[N-1] = 0.0;                 //The solution at x=N*h
+//    
+//// Create the vectors representing the "A" matrix
+//    double* a = new double[N-3];                              // Could replace array with constant, but leaving it general for now
+//    for (int i = 0; i < N-3; i++) {
+//        a[i] = 1.0;
+//    }
+//    
+//    double* b = new double[N-2];                              // There are N+1 points, but remove end points, so N-1 points to solve for.
+//    for (int i = 0; i < N-2; i++) {
+//        b[i] = -2.0;
+//    }
+//    
+//    double* c = new double[N-3];                              // Could replace array with constant, but leaving it general for now
+//    for (int i = 0; i < N-3; i++) {
+//        c[i] = 1.0;
+//    }
+//
+//    linTools::triDiagMatSolve(N, a, b, c, f, u);
+//    std::cout << "Total computation time [s] = " << float( clock () - begin_time ) /  CLOCKS_PER_SEC << "\r";
+//
+//    delete [] a;
+//    delete [] b;
+//    delete [] c;
+//    delete [] f;
+    
+    
+        // CODE FOR "RACECAR" (300,5e-5; 1000,8.5e-5)
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+//// Setup source vector "f"
+//    double* f = new double[N-2];
+//    f[0] = source(1*h);
+//    for (int i = 1; i < N-3; i++) {
+//        f[i] = source((i+1) * h);
+//    }
+//    f[N-3] = source((N-2) * h);
+//    
+//    const clock_t begin_time = std::clock();
+//    linTools::poisonSolver1D(N, L, 0.0, 0.0, f, u);
+//    std::cout << "Total computation time [s] = " << float( clock () - begin_time ) /  CLOCKS_PER_SEC << "\r";
+//    
+//    delete [] f;
+
+    
+        // CODE FOR "SUPER RACECAR" (300,4.8e-5; 1000,8.3e-5; 4000; 0.000233)
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+    // Setup source vector "f"
+    double* f = new double[N-2];
+    for (int i = 0; i < N-2; i++) {
+        f[i] = source((i+1) * h);
+    }
     
     const clock_t begin_time = std::clock();
-    
-    const int N = 80;//std::stoi(argv[1]);                      // takes the first argument, converts it to an integer, and stores it as "n".
-    double L = 1;                                // The length of the sample;
-    double h = L / N;                            // The step size;
-    
-    // Create the vectors representing the "A" matrix
-    int* a = new int[N-1];                              // Could replace array with constant, but leaving it general for now
-    for (int i = 0; i <= N-2; i++) {
-        a[i] = 1;
-        //std::cout << a[i] << "\r";                    // For debugging purposes
-    }
-    
-    int* b = new int[N];                                // Could replace array with constant, but leaving it general for now
-    for (int i = 0; i <= N-1; i++) {
-        b[i] = -2;
-        //std::cout << b[i] << "\r";                    // For debugging purposes
-    }
-    
-    int* c = new int[N-1];                              // Could replace array with constant, but leaving it general for now
-    for (int i = 0; i <= N-2; i++) {
-        c[i] = 1;
-        //std::cout << c[i] << "\r";                    // For debugging purposes
-    }
-    
-    // Create the source term vector "f"
-    double* f = new double[N];
-    for (int i = 0; i <= N-1; i++) {
-        f[i] = source(i * h) * h * h;
-        //std::cout << f[i] << "\r";                    // For debugging purposes
-    }
-    
-    // Setup solution vector "u"
-    double* u = new double[N+1];
-    
-    // Boundary conditions:
-    u[0] = 0;
-    u[N] = 0;
-    
-    // Setup mystery vectors from online example
-    double* cStar = new double[N-1];
-    double* fStar = new double[N];
-    
-    cStar[0] = c[0] / b[0];                             // May not be nceessary
-    fStar[0] = f[0] / b[0];                             // May not be necessary
-    
-    
-    // Forward substitution
-    double m;
-    for (int i=1; i<N; i++) {
-        m = 1 / (b[i] - a[i] * cStar[i-1]);
-        cStar[i] = c[i] * m;
-        fStar[i] = (f[i] - a[i] * fStar[i-1]) * m;
-    }
-    
-    delete [] a;
-    delete [] b;
-    delete [] c;
-    
-    //std::cout << " Here comes the data";                    // For debugging purposes
-    
-    // Backwards substitution
-    for (int i = N; i >= 0; i--) {
-        u[i] = fStar[i] - cStar[i] * f[i+1];
-        //u[i] = solution(i * h);
-        //std::cout << u[i] << "\r";                    // For debugging purposes
-    }
-    
-    delete [] f;
-    delete [] cStar;
-    delete [] fStar;
-    
+    linTools::poisonSolverDirichletBC1D(N, L, f, u);
     std::cout << "Total computation time [s] = " << float( clock () - begin_time ) /  CLOCKS_PER_SEC << "\r";
     
-    // Plot the solution
-    for (int i = 0; i <= N - 1; i = i+2) {
-        double num = -10000 * u[i];
-        //std:: cout << "Here's that val:" << num;                    // For debugging purposes
-        for (int i = 0; i < num; i++) {
-            std::cout << "-";
+    delete [] f;
+    
+        // CODE FOR RUDIMENTARY PLOTTER
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+    if (strncmp(argv[0], "-plot", 5)) {
+        for (int i = 0; i < N; i = i+1) {
+            double num = 1000 * u[i];
+            //std:: cout << "Here's that val:" << num;                    // For debugging purposes
+            for (int i = -1; i < num; i++) {
+                std::cout << "-";
+            }
+            std::cout << "\r";
         }
-        std::cout << "\r";
     }
+    
     
     delete [] u;
     

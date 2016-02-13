@@ -14,10 +14,10 @@
 #endif /* linearTools_hpp */
 
 // Declare the public class "linTools" which will have functions for solving linear equations
-class linTools {
-
-    // Declare public functions
-    public:
-        // A function which takes a matrix "A", decomposes it into a lower and upper matrix, and returns pointers to L and U.
-        void luDecomp (double A, double** L, double** U);
+namespace linTools {
+    void triDiagMatSolve (int, double*, double*, double*, double*, double*);
+    void poisonSolver1D(int N, double L, double v0, double vN, double* f, double* v);
+    void poisonSolverDirichletBC1D(int N, double L, double* f, double* v);
 };
+
+
