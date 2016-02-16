@@ -1,24 +1,17 @@
-%"/usr/texbin/pdflatex" -synctex=1 -interaction=nonstopmode -enable-write18 %.tex
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage{graphicx}
+\usepackage{graphicx}											% Use pdf, png, jpg, or epsÂ§ with pdflatex; use eps in DVI
 \usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
 \usepackage{float}													% for controlling the position of objects ie. tables
 
 \usepackage[small, bf]{caption}								%Adjust caption size of figures, tables, pictures...
 \setlength{\captionmargin}{15pt}
+										
+\graphicspath{{images/}}				% folder where images are stored in current directory
 
-\usepackage{graphicx}											% Use pdf, png, jpg, or epsÂ§ with pdflatex; use eps in DVI
-\graphicspath{{images/}{OpticalLayout/}{ElectricalLayout/}}				% folder where images are stored in current directory
-
-\usepackage{tikz}													% For creating graphics and figures
-\usetikzlibrary{arrows}
-\usetikzlibrary{decorations.pathmorphing}
-
-\usepackage{mathrsfs}	% Curly E for electric field
 
 % --------------------------- Code for placing two figure side by side ---------------------------------------------------------------------------------
 \usepackage{caption}
@@ -29,12 +22,7 @@
 \bibliographystyle{plain}
 
 \author{Curtis Rau}
-\title{Wavelength Tunable Optical Second Harmonic Generation Suitable For Use With The LIGO Squeezer}
-
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\rhead{LIGO-P1500246-v1}
+\title{A C++ Implementation of the Thomas Algorithm to Solve the One Dimensional Poisson Equation}
 
 
 \begin{document}
@@ -42,29 +30,319 @@
 \maketitle
 
 \begin{abstract}
-The purpose of this experiment was to construct an Optical Second Harmonic Generator (SHG) for advanced LIGO suitable for use with the Squeezer System.  The performance of the advanced LIGO interferometers will be fundamentally limited by Shot Noise.  One way of reducing shot noise in the output of the interferometer is to squeeze the vacuum state of the electromagnetic field the interferometer sees at its antisymmetric port.  Second harmonic generation is necessary for the production of squeezed light.  This paper touches upon the theory of squeezing, second harmonic generation, resonant optical cavities, higher-order modes in those cavities, and the Pound-Drever-Hall method.  DISCLAIMER: This is only a draft.  I have postponed the completion of this paper until after I have applied for graduate school.  It has not been peer reviewed.
 
-%-This paper will begin by reviewing second harmonic generation's role in aLIGO
-%-This paper will cover the theory required to understand the process of second harmonic generation
-%-The main focus of this paper will be giving and overview of this experiment so as to streamline the process for future experimenters.
-%-will include tips and tricks to trouble shoot and optimize a SHG.
-%-end with results from my go at it.
-%-a roughly concentric resonator cavity housed a PPKTP crystal
-%-employing temperature control
-%-employing the PDH method with a twist
-%-we lock onto the laser frequency 
-%-what will this be used for?
-blah
 \end{abstract}
 
 %\begin{multicols}{2}
 
+\section{Motivation}
+The Poisson Equation is a partial differential equation of the form
+
+\begin{equation}
+	- \frac{\partial^2 u}{\partial x^2} = f(x)
+\end{equation}
+
+which comes up often in physics.  One such application is Gauss’s Law in differential form.  To find a numerical solution to Poisson’s Equation we discretize x
+
+\begin{equation}
+\begin{aligned}
+	x    &\to & x_i          \\
+	u(x) &\to & u(x_i) = u_i \\
+	f(x) &\to & f(x_i) = f_i
+\end{aligned}
+\end{equation}
+
+and we utilize the limit definition of the second derivative
+
+\begin{equation}
+	\frac{\partial^2 u}{\partial x^2} = \lim_{N \to \infty} \frac{u_{i-1} - 2 u_i + u_{i+1}}{h^2}
+\end{equation}
+
+where $h = x_{i+1} - x_i = $ (length) / (number of divisions).  The discretized Poisson’s Equation reads
+
+\begin{equation}
+\begin{aligned}
+	\frac{u_{i-1} - 2 u_i + u_{i+1}}{h^2} = - f_i \\
+	- u_{i-1} + 2 u_i - u_{i+1} = h^2 f_i
+\end{aligned}
+\end{equation}
+
+As the number of divisions increases the numerical results will converge to the analytical result.  We can now write this as a system of linear equations:
+
+\begin{equation} 
+\begin{aligned}
+                            u_1 &=& uFirst      \\
+            - u_1 + 2 u_2 - u_3 &=& h^2 f_2     \\
+            - u_2 + 2 u_3 - u_4 &=& h^2 f_3     \\
+                             &\vdots &          \\
+- u_{N-3} + 2 u_{N-2} - u_{N-1} &=& h^2 f_{N-2} \\
+    - u_{N-2} + 2 u_{N-1} - u_N &=& h^2 f_{N-1} \\
+                            u_N &=& uLast
+\end{aligned} 
+\end{equation}
+
+The first and last equations are the boundary conditions.  There are N equations and N unknowns, so this linear system has only one solution.  The language of C++, in which the program was written, has the interesting (read frustrating and unintuitive) property that counting starts with 0.  So before we proceed we should make the indicies of the arrays f and u start with 0 so
+
+\begin{equation}
+\begin{aligned}
+	f_i &\to f_{i-2} \\
+	u_i &\to u_{i-1}
+\end{aligned}
+\end{equation}
 
 
-% -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-% -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+The endpoints, $u_0$ and $u_N$, are already known (because of boundary conditions) so we can remove the first and last equation from the system.  By rearranging the second and second to last equation we can arrive at a suggestive form for the system.  In the following equation, blank spots within the matrix represent 0's, and were ommitted so as to highlight the structure of the sparse matrix.
 
-\section{Second Harmonic Light in aLIGO}
-The interferometers implemented in advanced LIGO have a free spectral range that is much more stable than the frequency of the laser used to drive them (is this correct?).  Thus they reject (via reflection) much of the classical noise the laser produces such as thermal and Josephson noise.  The quantum noise contained in the output light from the interferometer, then, does not come from the laser, but rather stems from vacuum fluctuations which enter the antisymmetric port of the interferometer.  The noise comes in two conjugate forms: radiation pressure and photon counting error.  When the laser field and zero-point fluctuations are superimposed and impinge on one of the quasi-free-falling optics they perturb its position.  This is the radiation pressure noise which scales with input power.  When the signal leaves the interferometer it is recorded by a photodiode.  Because photons are quantized, the act of measuring optical power is really an act of counting.  This subjugates the interferometer signal to Poisson Counting Statistics where the relative standard deviation or specifically the uncertainty in the number of photons goes as $\sqrt{n}$.  This source of error is known as \textit{shot noise}, and it becomes increasingly problematic when output power is low.  Originally shot noise was thought to arise from fluctuations in the input power, but Caves showed shot noise also is a product of vacuum fluctuations entering the antisymmetric port \citep{Caves}.  The zero-point fluctuations mix with the signal field produced at the beamsplitter giving rise to shot noise \cite{LIGOSqueezer}.  Shot noise is particularly relevant because the LIGO interferometers are operated on a dark fringe.  Because one noise source dominates when optical power is high while the other dominates as it approaches zero, it stands to reason there would be some optimum amount of power such that the combined error from both sources (quadrature sum of these errors) is minimized.  This occurs when the error in each conjugate noise source is equal, and the optimum power is given by equation \ref{eqn:opt. power}.
+\begin{equation}
+\label{eqn: mat system}
+\left( \begin{array}{ccccc}
+	 2 & -1 &        &    &    \\
+	-1 &  2 &   -1   &    &    \\
+	   &    & \ddots &    &    \\
+	   &	    &   -1   &  2 & -1 \\
+	   &    &        & -1 &  2
+   \end{array} \right)
+\left( \begin{array}{c}
+	u_1     \\
+	u_2     \\
+	\vdots  \\
+	u_{N-3} \\
+	u_{N-2}
+   \end{array} \right)
+=
+\left( \begin{array}{c}
+	h^2 f_0 + u_0     \\
+	h^2 f_1           \\
+	\vdots        \\
+	h^2 f_{N-4}       \\
+	h^2 f_{N-3} + u_{N-1} \\
+   \end{array} \right)
+\end{equation}
+
+We can append the endpoints to the solution array after the program has run if we so desire.
+
+\section{The Thomas Algorithm}
+To solve equation \ref{eqn: mat system} we use the Thomas Algorithm.  A theorm of Linear Algebra states that any matrix can be decomposed into a product of an upper and lower triangular matrix.  The Thomas Algorithm is a LU Decomposition algorithm that is equivalent to a Gaussian Elimination algorithm.  First consider the general $m\times m$ tridiagonal matrix system.
+
+\begin{equation}
+\label{eqn: mat system}
+\left( \begin{array}{ccccc}
+	 b0 & c0 &        &         &         \\
+	a0 &  b1 &  c1    &         &         \\
+	   &    & \ddots  &         &         \\
+	   &	    & a_{m-3} & b_{m-2} & c_{m-2} \\
+	   &    &         & a_{m-2} & b_{m-1}
+   \end{array} \right)
+\left( \begin{array}{c}
+	x_0     \\
+	x_1     \\
+	\vdots  \\
+	x_{m-2} \\
+	x_{m-1}
+   \end{array} \right)
+=
+\left( \begin{array}{c}
+	g_0     \\
+	g_1     \\
+	\vdots  \\
+	g_{m-2} \\
+	g_{m-1} \\
+   \end{array} \right)
+\end{equation}
+
+The first step is to multiply the first row by a0/b0 and subtract it from the second row.  This is known as the forward substitution step.  By itterating this step the a's are eliminated, leaving an upper triangular matrix.
+
+\begin{equation}
+\begin{aligned}
+	a_i &=& 0                                    \\
+	b_i &=& b_i - \frac{a_{i-1}}{b_{i-1}}c_{i-1} \\
+	g_i &=& g_i - \frac{a_{i-1}}{b_{i-1}}g_{i-1}
+\end{aligned}
+\end{equation}
+
+At this point the simplified equation, with only an upper triangular matrix takes the form
+
+\begin{equation}
+\label{eqn: mat system}
+\left( \begin{array}{ccccc}
+    b0 & c0 &        &         &         \\
+	   & b1 &  c1    &         &         \\
+	   &    & \ddots &         &         \\
+	   &	    &        & b_{m-2} & c_{m-2} \\
+	   &    &        &         & b_{m-1}
+   \end{array} \right)
+\left( \begin{array}{c}
+	x_0     \\
+	x_1     \\
+	\vdots  \\
+	x_{m-2} \\
+	x_{m-1}
+   \end{array} \right)
+=
+\left( \begin{array}{c}
+	g_0     \\
+	g_1     \\
+	\vdots  \\
+	g_{m-2} \\
+	g_{m-1} \\
+   \end{array} \right)
+\end{equation}
+
+Now for the backwards substitution step.  The last row is multiplied by $c_{N-3}/b_{N-2}$ and subtracted from the second to last row, thus eliminating $c_{N-3}$ from the last row.  The general backwards substitution procedure is 
+
+\begin{equation}
+\begin{aligned}
+	c_i &=& 0                                    \\
+	g_{i-1} &=& g_{i-1} - \frac{c_{i-1}}{b_i}g_i
+\end{aligned}
+\end{equation}
+
+Iterating this process over the remaining c’s leaves a diagonal matrix
+
+\begin{equation}
+\label{eqn: mat system}
+\left( \begin{array}{ccccc}
+    b0 &    &        &         &         \\
+	   & b1 &        &         &         \\
+	   &    & \ddots &         &         \\
+	   &	    &        & b_{m-2} &         \\
+	   &    &        &         & b_{m-1}
+   \end{array} \right)
+\left( \begin{array}{c}
+	x_0     \\
+	x_1     \\
+	\vdots  \\
+	x_{m-2} \\
+	x_{m-1}
+   \end{array} \right)
+=
+\left( \begin{array}{c}
+	g_0     \\
+	g_1     \\
+	\vdots  \\
+	g_{m-2} \\
+	g_{m-1} \\
+   \end{array} \right)
+\end{equation}
+
+All that ramains to be computed is the solution, which is the very straight forward process of
+
+\begin{equation}
+x_i = \frac{f_i}{b_i}
+\end{equation}
+
+The function I wrote to perform this algorithim is displayed below.  It takes pointers to a, b, c, u, and f -- the vectors; and a integer N to tell the function how long the vectors are for the for loops.  The indicies of the u vector are shifted up one so that the endpoints can be assigned.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{cppThomasAlgorithm.png}
+	\caption{}
+\end{figure}
+
+\section{Faster, Tuned Algorithms}
+The generality of the Thomas Algorithm is unnecessary for the problem at hand.  Using it to solve the Poisson Equation means $a=c=1$ and $b=-2$.  Additionally we are using dirichlet boundary conditions so calculating the f vector can be somewhat simplified.  Further simplification can be realized by recognizing the recursive relation for $b$ given in equation (9) can be expressed in explicit form:
+
+\begin{equation}
+b_i = \frac{i+2}{i+1}
+\end{equation}
+
+The implementation of this looks like:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{cppPoissonSolverFast.png}
+	\caption{}
+\end{figure}
+
+
+
+\section{Results}
+The benchmarks for the three solving methods is given by the following table.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ c | c | c | c }
+		N      &  Thomas Algorithm    &       Thomas Algorithm      & Optimized Algorithm  \\
+		       &  Computation Time    & Computation Time (Adjusted) &  Computation Time    \\
+		\hline
+		5      & $4.7 \cdot 10^{-5}$  &     $3.5 \cdot 10^{-5}$     & $3.3 \cdot 10^{-5}$  \\
+		\hline
+		10     & $3.5 \cdot 10^{-5}$  &     $3.5 \cdot 10^{-5}$     & $3.3 \cdot 10^{-5}$  \\
+		\hline
+		25     & $3.5 \cdot 10^{-5}$  &     $3.5 \cdot 10^{-5}$     & $3.5 \cdot 10^{-5}$  \\
+		\hline
+		100    & $7.3 \cdot 10^{-5}$  &     $4.1 \cdot 10^{-5}$     & $3.7 \cdot 10^{-5}$  \\
+		\hline
+		1,000  & $7.0 \cdot 10^{-5}$  &     $9.4 \cdot 10^{-5}$     & $6.9 \cdot 10^{-5}$  \\
+		\hline
+		10,000 & $4.06 \cdot 10^{-4}$ &     $6.05 \cdot 10^{-4}$    & $3.79 \cdot 10^{-4}$
+	\end{tabular}
+	\caption{ \label{table:}}
+\end{table}
+
+The code was benchmarked on a macbook pro.  Apple’s Grand Central Dispatch (GCD) makes accurately benchmarking almost impossible.  The way this code is written it will execute on one thread.  Modern operating systems break up thread execution because there are almost always more threads executing at any given time than there are cores in the processor.  This means the execution time as shown above is probably a factor of 10 to 100 times longer than if the thread were to execute continuously.  All that can be done on a computer running a modern operating system (without fancy code or dedicated cores) is set an upper limit on the computation time.  This also makes it difficult to empirically verify the dependency of computation time on the number of points.  Running identical code two times commonly yealds two distinct computation times.  The ones shown in the table above represent the smallest time observed.
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+  		\centering
+  		\includegraphics[width=.9\linewidth]{solutionN5}
+  		\caption{Numerical solution with 5 interior points. \label{fig: hermite gaussian modes}}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+  		\centering
+  		\includegraphics[width=.9\linewidth]{solutionErrorN5}
+  		\caption{Laguerre Gaussian Modes \label{fig:  laguerre gaussian modes}}
+	\end{subfigure}
+	
+%	\caption{A figure with two subfigures}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+  		\centering
+  		\includegraphics[width=.9\linewidth]{solutionN10}
+  		\caption{Numerical solution with 10 interior points. \label{fig: }}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+  		\centering
+  		\includegraphics[width=.9\linewidth]{solutionErrorN10}
+  		\caption{Point by point error in numerical solution with 10 interior points \label{fig: }}
+	\end{subfigure}
+\end{figure}
+
+
+\begin{figure}[H]
+	\begin{subfigure}{.5\textwidth}
+  		\centering
+  		\includegraphics[width=.9\linewidth]{solutionN25}
+  		\caption{Numerical solution with 25 interior points. \label{fig: }}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+  		\centering
+  		\includegraphics[width=.9\linewidth]{solutionErrorN25}
+  		\caption{Point by point error in numerical solution with 25 interior points \label{fig: }}
+	\end{subfigure}
+
+%	\caption{A figure with two subfigures}
+\end{figure}
+	
+\begin{figure}[H]
+	\centering
+	
+	\begin{subfigure}{.5\textwidth}
+  		\centering
+  		\includegraphics[width=.9\linewidth]{solutionN100}
+  		\caption{Numerical solution with 100 interior points. \label{fig: }}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+  		\centering
+  		\includegraphics[width=.9\linewidth]{solutionErrorN100}
+  		\caption{Point by point error in numerical solution with 100 interior points \label{fig: }}
+	\end{subfigure}
+	\caption{These calculated error graphs look pretty suspicious to me.  I’m going to take a closer look at them.  Namely ther error is clearly going to zero, but errors, indicated by the error graphs, are not going down, rather the shape is converging to something unexpected.}
+\end{figure}
 
 \end{document}
