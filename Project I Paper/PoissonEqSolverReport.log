@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  16 FEB 2016 16:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  16 FEB 2016 17:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -415,6 +415,9 @@ LaTeX Warning: Label `eqn: mat system' multiply defined.
 LaTeX Warning: Label `eqn: mat system' multiply defined.
 
 
+LaTeX Warning: Label `table:' multiply defined.
+
+
 LaTeX Warning: Label `fig: ' multiply defined.
 
 
@@ -563,75 +566,75 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-<images/cppThomasAlgorithm.png, id=20, 555.07375pt x 332.24126pt>
+<images/cppThomasAlgorithm.png, id=24, 555.07375pt x 332.24126pt>
 File: images/cppThomasAlgorithm.png Graphic file (type png)
 
 <use images/cppThomasAlgorithm.png>
 Package pdftex.def Info: images/cppThomasAlgorithm.png used on input line 238.
 (pdftex.def)             Requested size: 400.38872pt x 239.65456pt.
-
-<images/cppPoissonSolverFast.png, id=22, 610.28pt x 285.065pt>
+ [3 <./images/cppThomasAlgorithm.png>]
+<images/cppPoissonSolverFast.png, id=30, 610.28pt x 285.065pt>
 File: images/cppPoissonSolverFast.png Graphic file (type png)
 
 <use images/cppPoissonSolverFast.png>
-Package pdftex.def Info: images/cppPoissonSolverFast.png used on input line 253
+Package pdftex.def Info: images/cppPoissonSolverFast.png used on input line 277
 .
 (pdftex.def)             Requested size: 400.38872pt x 187.02994pt.
- [3 <./images/cppThomasAlgorithm.png>]
-<images/solutionN5.png, id=27, 462.72874pt x 282.05376pt>
+
+<images/solutionN5.png, id=31, 462.72874pt x 282.05376pt>
 File: images/solutionN5.png Graphic file (type png)
 
 <use images/solutionN5.png>
-Package pdftex.def Info: images/solutionN5.png used on input line 289.
+Package pdftex.def Info: images/solutionN5.png used on input line 327.
 (pdftex.def)             Requested size: 225.21626pt x 137.27792pt.
 
-<images/solutionErrorN5.png, id=28, 374.39874pt x 242.9075pt>
+<images/solutionErrorN5.png, id=32, 374.39874pt x 242.9075pt>
 File: images/solutionErrorN5.png Graphic file (type png)
 
 <use images/solutionErrorN5.png>
-Package pdftex.def Info: images/solutionErrorN5.png used on input line 294.
+Package pdftex.def Info: images/solutionErrorN5.png used on input line 332.
 (pdftex.def)             Requested size: 225.21626pt x 146.11996pt.
  [4 <./images/cppPoissonSolverFast.png>]
-<images/solutionN10.png, id=33, 457.71pt x 282.05376pt>
+<images/solutionN10.png, id=37, 457.71pt x 282.05376pt>
 File: images/solutionN10.png Graphic file (type png)
 
 <use images/solutionN10.png>
-Package pdftex.def Info: images/solutionN10.png used on input line 306.
+Package pdftex.def Info: images/solutionN10.png used on input line 344.
 (pdftex.def)             Requested size: 225.21626pt x 138.78424pt.
 
-<images/solutionErrorN10.png, id=34, 372.39125pt x 233.87375pt>
+<images/solutionErrorN10.png, id=38, 372.39125pt x 233.87375pt>
 File: images/solutionErrorN10.png Graphic file (type png)
 
 <use images/solutionErrorN10.png>
-Package pdftex.def Info: images/solutionErrorN10.png used on input line 311.
+Package pdftex.def Info: images/solutionErrorN10.png used on input line 349.
 (pdftex.def)             Requested size: 225.21626pt x 141.44586pt.
 
-<images/solutionN25.png, id=35, 459.7175pt x 284.06125pt>
+<images/solutionN25.png, id=39, 459.7175pt x 284.06125pt>
 File: images/solutionN25.png Graphic file (type png)
 
 <use images/solutionN25.png>
-Package pdftex.def Info: images/solutionN25.png used on input line 320.
+Package pdftex.def Info: images/solutionN25.png used on input line 358.
 (pdftex.def)             Requested size: 225.21626pt x 139.1652pt.
 
-<images/solutionErrorN25.png, id=36, 373.395pt x 239.89626pt>
+<images/solutionErrorN25.png, id=40, 373.395pt x 239.89626pt>
 File: images/solutionErrorN25.png Graphic file (type png)
 
 <use images/solutionErrorN25.png>
-Package pdftex.def Info: images/solutionErrorN25.png used on input line 325.
+Package pdftex.def Info: images/solutionErrorN25.png used on input line 363.
 (pdftex.def)             Requested size: 225.21626pt x 144.69658pt.
 
-<images/solutionN100.png, id=37, 458.71375pt x 286.06876pt>
+<images/solutionN100.png, id=41, 458.71375pt x 286.06876pt>
 File: images/solutionN100.png Graphic file (type png)
 
 <use images/solutionN100.png>
-Package pdftex.def Info: images/solutionN100.png used on input line 337.
+Package pdftex.def Info: images/solutionN100.png used on input line 375.
 (pdftex.def)             Requested size: 225.21626pt x 140.45427pt.
 
-<images/solutionErrorN100.png, id=38, 371.3875pt x 236.885pt>
+<images/solutionErrorN100.png, id=42, 371.3875pt x 236.885pt>
 File: images/solutionErrorN100.png Graphic file (type png)
 
 <use images/solutionErrorN100.png>
-Package pdftex.def Info: images/solutionErrorN100.png used on input line 342.
+Package pdftex.def Info: images/solutionErrorN100.png used on input line 380.
 (pdftex.def)             Requested size: 225.21626pt x 143.65382pt.
  [5 <./images/solutionN5.png> <./images/solutionErrorN5.png> <./images/solution
 N10.png> <./images/solutionErrorN10.png> <./images/solutionN25.png> <./images/s
@@ -642,11 +645,11 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4602 strings out of 493089
- 66645 string characters out of 6134842
- 150094 words of memory out of 5000000
- 8007 multiletter control sequences out of 15000+600000
- 11495 words of font info for 45 fonts, out of 8000000 for 9000
+ 4610 strings out of 493089
+ 66724 string characters out of 6134842
+ 151094 words of memory out of 5000000
+ 8012 multiletter control sequences out of 15000+600000
+ 12741 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,9n,38p,957b,483s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
@@ -654,17 +657,20 @@ Here is how much of TeX's memory you used:
 /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
 usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
 sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/loc
-al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local
-/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/te
-xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texli
-ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texliv
-e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on PoissonEqSolverReport.pdf (6 pages, 279797 bytes).
+/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
+al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local
+/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/20
+15/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/201
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
+Output written on PoissonEqSolverReport.pdf (6 pages, 306738 bytes).
 PDF statistics:
- 92 PDF objects out of 1000 (max. 8388607)
- 51 compressed objects within 1 object stream
+ 104 PDF objects out of 1000 (max. 8388607)
+ 60 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  51 words of extra memory for PDF output out of 10000 (max. 10000000)
 

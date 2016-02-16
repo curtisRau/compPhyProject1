@@ -30,7 +30,7 @@
 \maketitle
 
 \begin{abstract}
-
+In this project we sought to implement the Thomas Algorithm, which is a LU decomposition method for solving tridiagonal matricies, to solve the Poisson Equation with Dirichlet boundary conditions.  In short, the equation to be solved is a non-homogenious second order linear partial differential equation.  We discretize the equation, which generates a system of equations, but because the differential equation is linear, this discretized system of equations is also linear, so it can be expressed as a matrix equation of the form Ax=b.  The matrix A is tridiagonal.  Gaussian elimination can be used to solve the system ($\propto N^3$ flops) but a much faster method of solving the system is the Thomas Algorithm ($\propto N$ flops).
 \end{abstract}
 
 %\begin{multicols}{2}
@@ -239,6 +239,30 @@ The function I wrote to perform this algorithim is displayed below.  It takes po
 	\caption{}
 \end{figure}
 
+A summery of the opperations the processor has to perform for this algorithm are given below.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ c | c | c }
+		Operation	    & Floating Point & Integer          \\
+		\hline
+		Memory Reads    &    $14(N-2)$   & $18(N-2)$        \\
+		\hline
+		Memory Writes   &     $4(N-2)$   & $2(N-1)$         \\
+		\hline
+		Additions       &                & $3(N-2) + (N-1)$ \\
+		\hline
+		Subtractions    &     $3(N-2)$   & $7(N-2) + (N-1)$ \\
+		\hline
+		Multiplications &     $3(N-2)$   &                  \\
+		\hline
+		Divisions       &     $4(N-2)$   &		           \\
+		\hline
+		Comparisons	    &                & $2(N-1)$         \\
+	\end{tabular}
+	\caption{ \label{table:}}
+\end{table}
+
 \section{Faster, Tuned Algorithms}
 The generality of the Thomas Algorithm is unnecessary for the problem at hand.  Using it to solve the Poisson Equation means $a=c=1$ and $b=-2$.  Additionally we are using dirichlet boundary conditions so calculating the f vector can be somewhat simplified.  Further simplification can be realized by recognizing the recursive relation for $b$ given in equation (9) can be expressed in explicit form:
 
@@ -281,6 +305,20 @@ The benchmarks for the three solving methods is given by the following table.
 \end{table}
 
 The code was benchmarked on a macbook pro.  Apple’s Grand Central Dispatch (GCD) makes accurately benchmarking almost impossible.  The way this code is written it will execute on one thread.  Modern operating systems break up thread execution because there are almost always more threads executing at any given time than there are cores in the processor.  This means the execution time as shown above is probably a factor of 10 to 100 times longer than if the thread were to execute continuously.  All that can be done on a computer running a modern operating system (without fancy code or dedicated cores) is set an upper limit on the computation time.  This also makes it difficult to empirically verify the dependency of computation time on the number of points.  Running identical code two times commonly yealds two distinct computation times.  The ones shown in the table above represent the smallest time observed.
+
+The equation we tested these algorithms on is
+
+\begin{equation}
+- \frac{\partial^2 u}{\partial x^2} = 100 e^{-10x}
+\end{equation}
+
+with Dirichlet boundary conditions the solution is
+
+\begin{equation}
+u(x) = 1 - \left( 1 - e^{-10} \right) x - e^{-10x}
+\end{equation}
+
+Numerical approximations with increasing number of points are given below.
 
 \begin{figure}[H]
 	\centering
