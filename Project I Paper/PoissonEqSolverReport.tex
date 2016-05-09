@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[twocolumn, groupedaddress]{revtex4-1}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -13,7 +13,7 @@
 \graphicspath{{images/}}				% folder where images are stored in current directory
 
 
-% --------------------------- Code for placing two figure side by side ---------------------------------------------------------------------------------
+% --------------------------- Code for placing two figure side by side -------------------------------------------------------------------------
 \usepackage{caption}
 \usepackage{subcaption}
 
@@ -21,28 +21,29 @@
 \usepackage{natbib}												% For fancy in-text citations
 \bibliographystyle{plain}
 
-\author{Curtis Rau}
-\title{A C++ Implementation of the Thomas Algorithm to Solve the One Dimensional Poisson Equation}
-
 
 \begin{document}
 
-\maketitle
+\title{A C++ Implementation of the Thomas Algorithm to Solve the One Dimensional Poisson Equation}
+
+\author{Curtis Rau}
+\affiliation{Michigan State University}
 
 \begin{abstract}
-In this project we sought to implement the Thomas Algorithm, which is a LU decomposition method for solving tridiagonal matricies, to solve the Poisson Equation with Dirichlet boundary conditions.  In short, the equation to be solved is a non-homogenious second order linear partial differential equation.  We discretize the equation, which generates a system of equations, but because the differential equation is linear, this discretized system of equations is also linear, so it can be expressed as a matrix equation of the form Ax=b.  The matrix A is tridiagonal.  Gaussian elimination can be used to solve the system ($\propto N^3$ flops) but a much faster method of solving the system is the Thomas Algorithm ($\propto N$ flops).
+In this project we sought to implement the Thomas Algorithm, which is a LU decomposition method for solving tridiagonal matricies, to solve the Poisson Equation with Dirichlet boundary conditions.  In short, the equation to be solved is a non-homogenious second order linear partial differential equation.  We discretize the equation, which generates a system of equations, but because the differential equation is linear, this discretized system of equations is also linear, so it can be expressed as a matrix equation of the form Ax=b.  The matrix A is tridiagonal.  Gaussian elimination can be used to solve the system ($\propto N^3$ flops) but a much faster method of solving the system is the Thomas Algorithm ($\propto N$ flops). \citep{morten}
 \end{abstract}
 
-%\begin{multicols}{2}
+\maketitle
 
-\section{Motivation}
-The Poisson Equation is a partial differential equation of the form
+
+\section{Introduction}
+In Physics, Poisson Equation is a commonly encountered partial differential equation of the form
 
 \begin{equation}
 	- \frac{\partial^2 u}{\partial x^2} = f(x)
 \end{equation}
 
-which comes up often in physics.  One such application is Gauss’s Law in differential form.  To find a numerical solution to Poisson’s Equation we discretize x
+One such application is Gauss’s Law in differential form.  To find a numerical solution to Poisson’s Equation we discretize x
 
 \begin{equation}
 \begin{aligned}
@@ -93,7 +94,7 @@ The first and last equations are the boundary conditions.  There are N equations
 
 The endpoints, $u_0$ and $u_N$, are already known (because of boundary conditions) so we can remove the first and last equation from the system.  By rearranging the second and second to last equation we can arrive at a suggestive form for the system.  In the following equation, blank spots within the matrix represent 0's, and were ommitted so as to highlight the structure of the sparse matrix.
 
-\begin{equation}
+\begin{align}
 \label{eqn: mat system}
 \left( \begin{array}{ccccc}
 	 2 & -1 &        &    &    \\
@@ -108,23 +109,25 @@ The endpoints, $u_0$ and $u_N$, are already known (because of boundary condition
 	\vdots  \\
 	u_{N-3} \\
 	u_{N-2}
-   \end{array} \right)
-=
+   \end{array} \right) \nonumber
+ \\ =
 \left( \begin{array}{c}
 	h^2 f_0 + u_0     \\
 	h^2 f_1           \\
 	\vdots        \\
 	h^2 f_{N-4}       \\
 	h^2 f_{N-3} + u_{N-1} \\
-   \end{array} \right)
-\end{equation}
+   \end{array} \right)   
+\end{align}
 
 We can append the endpoints to the solution array after the program has run if we so desire.
+
+The following section gives an overview of the Thomas Algorithm which will be used to solve this tridiagonal matrix system.  We will then discus ways of making the algorithm faster for certain cases.  Finally reuslts of a c++ implementation are given.
 
 \section{The Thomas Algorithm}
 To solve equation \ref{eqn: mat system} we use the Thomas Algorithm.  A theorm of Linear Algebra states that any matrix can be decomposed into a product of an upper and lower triangular matrix.  The Thomas Algorithm is a LU Decomposition algorithm that is equivalent to a Gaussian Elimination algorithm.  First consider the general $m\times m$ tridiagonal matrix system.
 
-\begin{equation}
+\begin{align}
 \label{eqn: mat system}
 \left( \begin{array}{ccccc}
 	 b0 & c0 &        &         &         \\
@@ -139,8 +142,8 @@ To solve equation \ref{eqn: mat system} we use the Thomas Algorithm.  A theorm o
 	\vdots  \\
 	x_{m-2} \\
 	x_{m-1}
-   \end{array} \right)
-=
+   \end{array} \right) \nonumber
+ \\ =
 \left( \begin{array}{c}
 	g_0     \\
 	g_1     \\
@@ -148,7 +151,7 @@ To solve equation \ref{eqn: mat system} we use the Thomas Algorithm.  A theorm o
 	g_{m-2} \\
 	g_{m-1} \\
    \end{array} \right)
-\end{equation}
+\end{align}
 
 The first step is to multiply the first row by a0/b0 and subtract it from the second row.  This is known as the forward substitution step.  By itterating this step the a's are eliminated, leaving an upper triangular matrix.
 
@@ -162,7 +165,7 @@ The first step is to multiply the first row by a0/b0 and subtract it from the se
 
 At this point the simplified equation, with only an upper triangular matrix takes the form
 
-\begin{equation}
+\begin{align}
 \label{eqn: mat system}
 \left( \begin{array}{ccccc}
     b0 & c0 &        &         &         \\
@@ -177,8 +180,8 @@ At this point the simplified equation, with only an upper triangular matrix take
 	\vdots  \\
 	x_{m-2} \\
 	x_{m-1}
-   \end{array} \right)
-=
+   \end{array} \right) \nonumber
+ \\ =
 \left( \begin{array}{c}
 	g_0     \\
 	g_1     \\
@@ -186,7 +189,7 @@ At this point the simplified equation, with only an upper triangular matrix take
 	g_{m-2} \\
 	g_{m-1} \\
    \end{array} \right)
-\end{equation}
+\end{align}
 
 Now for the backwards substitution step.  The last row is multiplied by $c_{N-3}/b_{N-2}$ and subtracted from the second to last row, thus eliminating $c_{N-3}$ from the last row.  The general backwards substitution procedure is 
 
@@ -199,7 +202,7 @@ Now for the backwards substitution step.  The last row is multiplied by $c_{N-3}
 
 Iterating this process over the remaining c’s leaves a diagonal matrix
 
-\begin{equation}
+\begin{align}
 \label{eqn: mat system}
 \left( \begin{array}{ccccc}
     b0 &    &        &         &         \\
@@ -214,8 +217,8 @@ Iterating this process over the remaining c’s leaves a diagonal matrix
 	\vdots  \\
 	x_{m-2} \\
 	x_{m-1}
-   \end{array} \right)
-=
+   \end{array} \right) \nonumber
+ \\ =
 \left( \begin{array}{c}
 	g_0     \\
 	g_1     \\
@@ -223,7 +226,7 @@ Iterating this process over the remaining c’s leaves a diagonal matrix
 	g_{m-2} \\
 	g_{m-1} \\
    \end{array} \right)
-\end{equation}
+\end{align}
 
 All that ramains to be computed is the solution, which is the very straight forward process of
 
@@ -233,15 +236,15 @@ x_i = \frac{f_i}{b_i}
 
 The function I wrote to perform this algorithim is displayed below.  It takes pointers to a, b, c, u, and f -- the vectors; and a integer N to tell the function how long the vectors are for the for loops.  The indicies of the u vector are shifted up one so that the endpoints can be assigned.
 
-\begin{figure}[H]
+\begin{figure*}[t]
 	\centering
-	\includegraphics[width=0.8\linewidth]{cppThomasAlgorithm.png}
-	\caption{}
-\end{figure}
+	\includegraphics[width = 0.8\linewidth]{cppThomasAlgorithm.png}
+	\caption{C++ implementation of the Thomas Algorithm.}
+\end{figure*}
 
-A summery of the opperations the processor has to perform for this algorithm are given below.
+A summery of the opperations the processor has to perform for this algorithm are given in table \ref{table:thomasAlgoFLOPS}.
 
-\begin{table}[H]
+\begin{table*}[t]
 	\centering
 	\begin{tabular}{ c | c | c }
 		Operation	    & Floating Point & Integer          \\
@@ -260,8 +263,8 @@ A summery of the opperations the processor has to perform for this algorithm are
 		\hline
 		Comparisons	    &                & $2(N-1)$         \\
 	\end{tabular}
-	\caption{ \label{table:}}
-\end{table}
+	\caption{The important point here is not the specifics, but the fact that every operation is linear in $N$. \label{table:thomasAlgoFLOPS}}
+\end{table*}
 
 \section{Faster, Tuned Algorithms}
 The generality of the Thomas Algorithm is unnecessary for the problem at hand.  Using it to solve the Poisson Equation means $a=c=1$ and $b=-2$.  Additionally we are using dirichlet boundary conditions so calculating the f vector can be somewhat simplified.  Further simplification can be realized by recognizing the recursive relation for $b$ given in equation (9) can be expressed in explicit form:
@@ -272,22 +275,22 @@ b_i = \frac{i+2}{i+1}
 
 The implementation of this looks like:
 
-\begin{figure}[H]
+\begin{figure*}
 	\centering
-	\includegraphics[width=0.8\linewidth]{cppPoissonSolverFast.png}
+	\includegraphics[width = 0.8\linewidth]{cppPoissonSolverFast.png}
 	\caption{}
-\end{figure}
+\end{figure*}
 
 
 
 \section{Results}
-The benchmarks for the three solving methods is given by the following table.
+The benchmarks for the three solving methods is given in table \ref{table:benchmarks}.  The code was benchmarked on a macbook pro.  Apple’s Grand Central Dispatch (GCD) makes accurately benchmarking almost impossible.  The way this code is written it will execute on one thread.  Modern operating systems break up thread execution because there are almost always more threads executing at any given time than there are cores in the processor.  This means the execution time as shown above is probably a factor of 10 to 100 times longer than if the thread were to execute continuously.  All that can be done on a computer running a modern operating system (without fancy code or dedicated cores) is set an upper limit on the computation time.  This also makes it difficult to empirically verify the dependency of computation time on the number of points.  Running identical code two times commonly yealds two distinct computation times.  The ones shown in the table above represent the smallest time observed.
 
-\begin{table}[H]
+\begin{table*}
 	\centering
 	\begin{tabular}{ c | c | c | c }
-		N      &  Thomas Algorithm    &       Thomas Algorithm      & Optimized Algorithm  \\
-		       &  Computation Time    & Computation Time (Adjusted) &  Computation Time    \\
+		N      &  Thomas Algorithm    &  Adjusted Thomas Algorithm  & Optimized Algorithm  \\
+		       &  Computation Time    &       Computation Time      &  Computation Time    \\
 		\hline
 		5      & $4.7 \cdot 10^{-5}$  &     $3.5 \cdot 10^{-5}$     & $3.3 \cdot 10^{-5}$  \\
 		\hline
@@ -299,12 +302,12 @@ The benchmarks for the three solving methods is given by the following table.
 		\hline
 		1,000  & $7.0 \cdot 10^{-5}$  &     $9.4 \cdot 10^{-5}$     & $6.9 \cdot 10^{-5}$  \\
 		\hline
-		10,000 & $4.06 \cdot 10^{-4}$ &     $6.05 \cdot 10^{-4}$    & $3.79 \cdot 10^{-4}$
+		10,000 & $4.06 \cdot 10^{-4}$ &     $6.05 \cdot 10^{-4}$    & $3.79 \cdot 10^{-4}$ \\
+		\hline 
+		$10^8$ &        $14$          &            $6.4$           &        $3.6$
 	\end{tabular}
-	\caption{ \label{table:}}
-\end{table}
-
-The code was benchmarked on a macbook pro.  Apple’s Grand Central Dispatch (GCD) makes accurately benchmarking almost impossible.  The way this code is written it will execute on one thread.  Modern operating systems break up thread execution because there are almost always more threads executing at any given time than there are cores in the processor.  This means the execution time as shown above is probably a factor of 10 to 100 times longer than if the thread were to execute continuously.  All that can be done on a computer running a modern operating system (without fancy code or dedicated cores) is set an upper limit on the computation time.  This also makes it difficult to empirically verify the dependency of computation time on the number of points.  Running identical code two times commonly yealds two distinct computation times.  The ones shown in the table above represent the smallest time observed.
+	\caption{\label{table:benchmarks}}
+\end{table*}
 
 The equation we tested these algorithms on is
 
@@ -318,69 +321,91 @@ with Dirichlet boundary conditions the solution is
 u(x) = 1 - \left( 1 - e^{-10} \right) x - e^{-10x}
 \end{equation}
 
-Numerical approximations with increasing number of points are given below.
+Numerical approximations with increasing number of points are given in figures \ref{fig:result1} \ref{fig:result2} \ref{fig:result3} \ref{fig:result4}.
 
-\begin{figure}[H]
+\begin{figure*}
 	\centering
 	\begin{subfigure}{.5\textwidth}
   		\centering
   		\includegraphics[width=.9\linewidth]{solutionN5}
-  		\caption{Numerical solution with 5 interior points. \label{fig: hermite gaussian modes}}
+  		\caption{Numerical solution with 5 interior points.}
 	\end{subfigure}%
 	\begin{subfigure}{.5\textwidth}
   		\centering
   		\includegraphics[width=.9\linewidth]{solutionErrorN5}
-  		\caption{Laguerre Gaussian Modes \label{fig:  laguerre gaussian modes}}
+  		\caption{}
 	\end{subfigure}
 	
-%	\caption{A figure with two subfigures}
-\end{figure}
+	\caption{\label{fig:result1}}
+\end{figure*}
 
 
-\begin{figure}[H]
+\begin{figure*}
 	\centering
 	\begin{subfigure}{.5\textwidth}
   		\centering
   		\includegraphics[width=.9\linewidth]{solutionN10}
-  		\caption{Numerical solution with 10 interior points. \label{fig: }}
+  		\caption{Numerical solution with 10 interior points.}
 	\end{subfigure}%
 	\begin{subfigure}{.5\textwidth}
   		\centering
   		\includegraphics[width=.9\linewidth]{solutionErrorN10}
-  		\caption{Point by point error in numerical solution with 10 interior points \label{fig: }}
+  		\caption{Point by point error in numerical solution with 10 interior points}
 	\end{subfigure}
-\end{figure}
+	
+	\caption{\label{fig:result2}}
+\end{figure*}
 
 
-\begin{figure}[H]
+\begin{figure*}
 	\begin{subfigure}{.5\textwidth}
   		\centering
   		\includegraphics[width=.9\linewidth]{solutionN25}
-  		\caption{Numerical solution with 25 interior points. \label{fig: }}
+  		\caption{Numerical solution with 25 interior points.}
 	\end{subfigure}%
 	\begin{subfigure}{.5\textwidth}
   		\centering
   		\includegraphics[width=.9\linewidth]{solutionErrorN25}
-  		\caption{Point by point error in numerical solution with 25 interior points \label{fig: }}
+  		\caption{Point by point error in numerical solution with 25 interior points.}
 	\end{subfigure}
 
-%	\caption{A figure with two subfigures}
-\end{figure}
+	\caption{\label{fig:result3}}
+\end{figure*}
 	
-\begin{figure}[H]
+\begin{figure*}
 	\centering
 	
 	\begin{subfigure}{.5\textwidth}
   		\centering
   		\includegraphics[width=.9\linewidth]{solutionN100}
-  		\caption{Numerical solution with 100 interior points. \label{fig: }}
+  		\caption{Numerical solution with 100 interior points.}
 	\end{subfigure}%
 	\begin{subfigure}{.5\textwidth}
   		\centering
   		\includegraphics[width=.9\linewidth]{solutionErrorN100}
-  		\caption{Point by point error in numerical solution with 100 interior points \label{fig: }}
+  		\caption{Point by point error in numerical solution with 100 interior points.}
 	\end{subfigure}
-	\caption{These calculated error graphs look pretty suspicious to me.  I’m going to take a closer look at them.  Namely ther error is clearly going to zero, but errors, indicated by the error graphs, are not going down, rather the shape is converging to something unexpected.}
-\end{figure}
+	\caption{\label{fig:result4}}
+\end{figure*}
+
+The error graphs were generated
+
+\begin{equation}
+err = Log_{10} \left| \frac{calcVal - trueVal}{trueVal} \right|
+\end{equation}
+
+If $N$ is the number of points, appears that the formula for the error is
+
+\begin{equation}
+1-2 Log_{10} N
+\end{equation}
+
+this expression is actually dependent on the step size, but for the graphs the stepsize is proportional to 1/N.
+
+\section{Conclusion}
+The Thomas Algorithm is an extreamly efficient way to compute the solution to a linear second order differential equation.  It is also easily implemented, taking just a few lines of code.  The computation time goes as $\mathcal{O}(N)$, where $N$ is the number of integration points.  This is as good as one can hope for.  The error in the solution is proportional to the stepsize meaning one can predictably reduce the error down to an arbitrarly small number.
+
+% --------------------------- Code for the bibliography ---------------------------------------------------------------------------------
+\bibliography{poissonEqSolverReport}
 
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  16 FEB 2016 17:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  8 MAY 2016 22:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -6,27 +6,110 @@ entering extended mode
 (./PoissonEqSolverReport.tex
 LaTeX2e <2015/01/01>
 Babel <3.9l> and hyphenation patterns for 79 languages loaded.
-(/usr/local/texlive/2015/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2015/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/revtex/revtex4-1.cls
+Document Class: revtex4-1 2010/07/25/20:33:00 4.1r (http://publish.aps.org/revt
+ex4/ for documentation)
+ Copyright (c) 2009 The American Physical Society.
+ mailto:revtex@aps.org
+ Licensed under the LPPL:
+http://www.ctan.org/tex-archive/macros/latex/base/lppl.txt
+ Arthur Ogawa <arthur_ogawa at sbcglobal dot net>
+ Based on work by David Carlisle <david at dcarlisle.demon.co.uk>.
+ltxutil[2010/07/25/20:33:00 4.1r utilities package (portions licensed from W. E
+. Baxter web at superscript.com)]
+LaTeX Info: Redefining \@centercr on input line 308.
+Class revtex4-1 Info: Repairing broken LaTeX eqnarray on input line 358.
+\eqncolsep=\skip41
+Class revtex4-1 Info: Repairing hyperref-unfriendly LaTeX definition of \mpfoot
+note on input line 433.
+Class revtex4-1 Info: Repairing broken LateX \@sect on input line 755.
+\intertabularlinepenalty=\count79
+\@tbpen=\count80
+\@arstrutbox@hline=\box26
+Class revtex4-1 Info: Repairing broken LaTeX \@xbitor on input line 1786.
+Class revtex4-1 Info: Making \typeout \long on input line 2046.
+ltxfront[2010/07/25/20:33:00 4.1r frontmatter package (AO,DPC)]
+\c@affil=\count81
+\c@collab=\count82
+\absbox=\box27
+ltxgrid[2010/07/25/20:33:00 4.1r page grid package (portions licensed from W. E
+. Baxter web at superscript.com)]
+\c@linecount=\count83
+\output@latex=\toks14
+\box@size@1=\box28
+\box@size@2=\box29
+\@protection@box=\box30
+\@topmark@saved=\toks15
+\footins@saved=\box31
+\footins@recovered=\box32
+\column@recovered=\box33
+\pagesofar=\box34
+\footsofar=\box35
+\pagegrid@col=\count84
+Class revtex4-1 Info: Overriding \@vspace, \@vspacer, \@no@pgbk, \@newline, and
+ \\  on input line 5578.
+\c@part=\count85
+\c@section=\count86
+\c@subsection=\count87
+\c@subsubsection=\count88
+\c@paragraph=\count89
+\c@subparagraph=\count90
+\abovecaptionskip=\skip42
+\belowcaptionskip=\skip43
+\c@figure=\count91
+\fbox@1=\box36
+\c@table=\count92
+\fbox@2=\box37
+\c@video=\count93
+\fbox@4=\box38
+\@bibdataout=\write3
+\widetext@top=\box39
+\widetext@bot=\box40
+
+Class revtex4-1 Warning: No Society specified, using default society aps.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/revtex/aps4-1.rtx
+File: aps4-1 2010/07/25/20:33:00 4.1r (http://publish.aps.org/revtex4/ for docu
+mentation)
+Class revtex4-1 Info: RevTeX society APS selected on input line 31.
 )
-\c@part=\count79
-\c@section=\count80
-\c@subsection=\count81
-\c@subsubsection=\count82
-\c@paragraph=\count83
-\c@subparagraph=\count84
-\c@figure=\count85
-\c@table=\count86
-\abovecaptionskip=\skip41
-\belowcaptionskip=\skip42
-\bibindent=\dimen102
+
+Class revtex4-1 Warning: No journal specified, using default pra.
+
+Class revtex4-1 Info: APS journal PRA selected on input line 7545.
+
+Class revtex4-1 Warning: No type size specified, using default 10.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/revtex/aps10pt4-1.rtx
+File: aps10pt4-1 2010/07/25/20:33:00 4.1r (http://publish.aps.org/revtex4/ for 
+documentation)
+Class revtex4-1 Info: RevTeX pointsize 10pt selected on input line 30.
 )
+(/usr/local/texlive/2015/texmf-dist/tex/latex/textcase/textcase.sty
+Package: textcase 2004/10/07 v0.07 Text only upper/lower case changing (DPC)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip44
+\bibsep=\skip45
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count94
+)
+Class revtex4-1 Info: Repairing natbib's \BibitemShut on input line 7549.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/revtex/revsymb4-1.sty
+Package: revsymb4-1 2010/07/25/20:33:00 4.1r (http://publish.aps.org/revtex4/ f
+or documentation)
+LaTeX Info: Redefining \REV@mathfrak on input line 119.
+))
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2015/03/17 v1.2c Input encoding file
-\inpenc@prehook=\toks14
-\inpenc@posthook=\toks15
+\inpenc@prehook=\toks16
+\inpenc@posthook=\toks17
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2014/09/29 v1.1m UTF-8 support for inputenc
@@ -242,7 +325,7 @@ Now handling font encoding U ...
 ))
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2013/01/14 v2.14 AMS math features
-\@mathmargin=\skip43
+\@mathmargin=\skip46
 
 For additional information on amsmath, use the `?' option.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -250,51 +333,53 @@ Package: amstext 2000/06/29 v2.01
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
-\@emptytoks=\toks16
-\ex@=\dimen103
-))
+\@emptytoks=\toks18
+\ex@=\dimen102
+)
+LaTeX Info: Redefining \text on input line 39.
+)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
-\pmbraise@=\dimen104
+\pmbraise@=\dimen103
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
-\inf@bad=\count87
+\inf@bad=\count95
 LaTeX Info: Redefining \frac on input line 210.
-\uproot@=\count88
-\leftroot@=\count89
+\uproot@=\count96
+\leftroot@=\count97
 LaTeX Info: Redefining \overline on input line 306.
-\classnum@=\count90
-\DOTSCASE@=\count91
+\classnum@=\count98
+\DOTSCASE@=\count99
 LaTeX Info: Redefining \ldots on input line 378.
 LaTeX Info: Redefining \dots on input line 381.
 LaTeX Info: Redefining \cdots on input line 466.
-\Mathstrutbox@=\box26
-\strutbox@=\box27
-\big@size=\dimen105
+\Mathstrutbox@=\box41
+\strutbox@=\box42
+\big@size=\dimen104
 LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
-\macc@depth=\count92
-\c@MaxMatrixCols=\count93
-\dotsspace@=\muskip10
-\c@parentequation=\count94
-\dspbrk@lvl=\count95
-\tag@help=\toks17
-\row@=\count96
-\column@=\count97
-\maxfields@=\count98
-\andhelp@=\toks18
-\eqnshift@=\dimen106
-\alignsep@=\dimen107
-\tagshift@=\dimen108
-\tagwidth@=\dimen109
-\totwidth@=\dimen110
-\lineht@=\dimen111
-\@envbody=\toks19
-\multlinegap=\skip44
-\multlinetaggap=\skip45
-\mathdisplay@stack=\toks20
+\macc@depth=\count100
+\c@MaxMatrixCols=\count101
+\dotsspace@=\muskip11
+\c@parentequation=\count102
+\dspbrk@lvl=\count103
+\tag@help=\toks19
+\row@=\count104
+\column@=\count105
+\maxfields@=\count106
+\andhelp@=\toks20
+\eqnshift@=\dimen105
+\alignsep@=\dimen106
+\tagshift@=\dimen107
+\tagwidth@=\dimen108
+\totwidth@=\dimen109
+\lineht@=\dimen110
+\@envbody=\toks21
+\multlinegap=\skip47
+\multlinetaggap=\skip48
+\mathdisplay@stack=\toks22
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
@@ -304,6 +389,8 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+LaTeX Info: Redefining \frak on input line 111.
+LaTeX Info: Redefining \Bbb on input line 113.
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
@@ -313,7 +400,7 @@ Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks21
+\KV@toks@=\toks23
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
@@ -335,10 +422,10 @@ Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
-\Gread@gobject=\count99
+\Gread@gobject=\count107
 ))
-\Gin@req@height=\dimen112
-\Gin@req@width=\dimen113
+\Gin@req@height=\dimen111
+\Gin@req@width=\dimen112
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
@@ -354,26 +441,26 @@ Package ifvtex Info: VTeX not detected.
 (/usr/local/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count100
-\Gm@cntv=\count101
-\c@Gm@tempcnt=\count102
-\Gm@bindingoffset=\dimen114
-\Gm@wd@mp=\dimen115
-\Gm@odd@mp=\dimen116
-\Gm@even@mp=\dimen117
-\Gm@layoutwidth=\dimen118
-\Gm@layoutheight=\dimen119
-\Gm@layouthoffset=\dimen120
-\Gm@layoutvoffset=\dimen121
-\Gm@dimlist=\toks22
+\Gm@cnth=\count108
+\Gm@cntv=\count109
+\c@Gm@tempcnt=\count110
+\Gm@bindingoffset=\dimen113
+\Gm@wd@mp=\dimen114
+\Gm@odd@mp=\dimen115
+\Gm@even@mp=\dimen116
+\Gm@layoutwidth=\dimen117
+\Gm@layoutheight=\dimen118
+\Gm@layouthoffset=\dimen119
+\Gm@layoutvoffset=\dimen120
+\Gm@dimlist=\toks24
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count103
-\float@exts=\toks23
-\float@box=\box28
-\@float@everytoks=\toks24
-\@floatcapt=\box29
+\c@float@type=\count111
+\float@exts=\toks25
+\float@box=\box43
+\@float@everytoks=\toks26
+\@floatcapt=\box44
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
@@ -381,29 +468,44 @@ Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 57.
-\captionmargin=\dimen122
-\captionmargin@=\dimen123
-\captionwidth=\dimen124
-\caption@tempdima=\dimen125
-\caption@indent=\dimen126
-\caption@parindent=\dimen127
-\caption@hangindent=\dimen128
+\captionmargin=\dimen121
+\captionmargin@=\dimen122
+\captionwidth=\dimen123
+\caption@tempdima=\dimen124
+\caption@indent=\dimen125
+\caption@parindent=\dimen126
+\caption@hangindent=\dimen127
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
 )
-\c@ContinuedFloat=\count104
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+Package caption Info: \@makecaption = \long macro:#1#2->\par \vskip \abovecapti
+onskip \begingroup \small \rmfamily \sbox \@tempboxa {\let \\\heading@cr \@make
+@capt@title {#1}{#2}}\@ifdim {\wd \@tempboxa >\hsize }{\begingroup \samepage \f
+lushing \let \footnote \@footnotemark@gobble \@make@capt@title {#1}{#2}\par \en
+dgroup }{\global \@minipagefalse \hb@xt@ \hsize {\hfil \unhbox \@tempboxa \hfil
+ }}\endgroup \vskip \belowcaptionskip .
+\c@ContinuedFloat=\count112
 Package caption Info: float package is loaded.
-)
-(/usr/local/texlive/2015/texmf-dist/tex/latex/caption/subcaption.sty
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2013/02/03 v1.1-62 Sub-captions (AR)
-\c@subfigure=\count105
-\c@subtable=\count106
+\c@subfigure=\count113
+\c@subtable=\count114
 )
-(/usr/local/texlive/2015/texmf-dist/tex/latex/natbib/natbib.sty
-Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip46
-\bibsep=\skip47
-LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count107
-)
+Class revtex4-1 Info: Patching LaTeX tabular. on input line 25.
+
+
+Class revtex4-1 Warning: Repair the float package.
+
+Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 25.
+
+Class revtex4-1 Info: cite was not loaded (OK!) on input line 25.
+Class revtex4-1 Info: mcite was not loaded (OK!) on input line 25.
+Class revtex4-1 Info: multicol was not loaded (OK!) on input line 25.
 (./PoissonEqSolverReport.aux
 
 LaTeX Warning: Label `eqn: mat system' multiply defined.
@@ -414,67 +516,34 @@ LaTeX Warning: Label `eqn: mat system' multiply defined.
 
 LaTeX Warning: Label `eqn: mat system' multiply defined.
 
-
-LaTeX Warning: Label `table:' multiply defined.
-
-
-LaTeX Warning: Label `fig: ' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig: ' multiply defined.
-
-
-LaTeX Warning: Label `fig: ' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig: ' multiply defined.
-
-
-LaTeX Warning: Label `fig: ' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig: ' multiply defined.
-
-
-LaTeX Warning: Label `fig: ' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig: ' multiply defined.
-
-
-LaTeX Warning: Label `fig: ' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig: ' multiply defined.
-
 )
 \openout1 = `PoissonEqSolverReport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
  (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count108
-\scratchdimen=\dimen129
-\scratchbox=\box30
-\nofMPsegments=\count109
-\nofMParguments=\count110
-\everyMPshowfont=\toks25
-\MPscratchCnt=\count111
-\MPscratchDim=\dimen130
-\MPnumerator=\count112
-\makeMPintoPDFobject=\count113
-\everyMPtoPDFconversion=\toks26
+\scratchcounter=\count115
+\scratchdimen=\dimen128
+\scratchbox=\box45
+\nofMPsegments=\count116
+\nofMParguments=\count117
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count118
+\MPscratchDim=\dimen129
+\MPnumerator=\count119
+\makeMPintoPDFobject=\count120
+\everyMPtoPDFconversion=\toks28
 ) (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -535,15 +604,15 @@ e
 * \textheight=681.15898pt
 * \oddsidemargin=-15.36449pt
 * \evensidemargin=-15.36449pt
-* \topmargin=-52.36449pt
-* \headheight=12.0pt
-* \headsep=25.0pt
+* \topmargin=-56.36449pt
+* \headheight=25.0pt
+* \headsep=16.0pt
 * \topskip=10.0pt
 * \footskip=30.0pt
-* \marginparwidth=65.0pt
-* \marginparsep=11.0pt
-* \columnsep=10.0pt
-* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \marginparwidth=30.0pt
+* \marginparsep=6.0pt
+* \columnsep=18.0pt
+* \skip\footins=39.0pt plus 4.0pt minus 12.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -555,103 +624,105 @@ e
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 30.
+\openout3 = `PoissonEqSolverReportNotes.bib'.
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 33.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 30.
+LaTeX Font Info:    Try loading font information for U+msb on input line 33.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
-
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-<images/cppThomasAlgorithm.png, id=24, 555.07375pt x 332.24126pt>
+) [1{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+<images/cppThomasAlgorithm.png, id=20, 555.07375pt x 332.24126pt>
 File: images/cppThomasAlgorithm.png Graphic file (type png)
 
 <use images/cppThomasAlgorithm.png>
-Package pdftex.def Info: images/cppThomasAlgorithm.png used on input line 238.
+Package pdftex.def Info: images/cppThomasAlgorithm.png used on input line 241.
 (pdftex.def)             Requested size: 400.38872pt x 239.65456pt.
- [3 <./images/cppThomasAlgorithm.png>]
-<images/cppPoissonSolverFast.png, id=30, 610.28pt x 285.065pt>
+
+<images/cppPoissonSolverFast.png, id=22, 610.28pt x 285.065pt>
 File: images/cppPoissonSolverFast.png Graphic file (type png)
 
 <use images/cppPoissonSolverFast.png>
-Package pdftex.def Info: images/cppPoissonSolverFast.png used on input line 277
+Package pdftex.def Info: images/cppPoissonSolverFast.png used on input line 280
 .
 (pdftex.def)             Requested size: 400.38872pt x 187.02994pt.
-
-<images/solutionN5.png, id=31, 462.72874pt x 282.05376pt>
+ [2]
+<images/solutionN5.png, id=26, 462.72874pt x 282.05376pt>
 File: images/solutionN5.png Graphic file (type png)
 
 <use images/solutionN5.png>
-Package pdftex.def Info: images/solutionN5.png used on input line 327.
+Package pdftex.def Info: images/solutionN5.png used on input line 330.
 (pdftex.def)             Requested size: 225.21626pt x 137.27792pt.
 
-<images/solutionErrorN5.png, id=32, 374.39874pt x 242.9075pt>
+<images/solutionErrorN5.png, id=27, 361.35pt x 229.85875pt>
 File: images/solutionErrorN5.png Graphic file (type png)
 
 <use images/solutionErrorN5.png>
-Package pdftex.def Info: images/solutionErrorN5.png used on input line 332.
-(pdftex.def)             Requested size: 225.21626pt x 146.11996pt.
- [4 <./images/cppPoissonSolverFast.png>]
-<images/solutionN10.png, id=37, 457.71pt x 282.05376pt>
+Package pdftex.def Info: images/solutionErrorN5.png used on input line 335.
+(pdftex.def)             Requested size: 225.21626pt x 143.2615pt.
+
+<images/solutionN10.png, id=28, 457.71pt x 282.05376pt>
 File: images/solutionN10.png Graphic file (type png)
 
 <use images/solutionN10.png>
-Package pdftex.def Info: images/solutionN10.png used on input line 344.
+Package pdftex.def Info: images/solutionN10.png used on input line 347.
 (pdftex.def)             Requested size: 225.21626pt x 138.78424pt.
 
-<images/solutionErrorN10.png, id=38, 372.39125pt x 233.87375pt>
+<images/solutionErrorN10.png, id=29, 361.35pt x 229.85875pt>
 File: images/solutionErrorN10.png Graphic file (type png)
 
 <use images/solutionErrorN10.png>
-Package pdftex.def Info: images/solutionErrorN10.png used on input line 349.
-(pdftex.def)             Requested size: 225.21626pt x 141.44586pt.
+Package pdftex.def Info: images/solutionErrorN10.png used on input line 352.
+(pdftex.def)             Requested size: 225.21626pt x 143.2615pt.
 
-<images/solutionN25.png, id=39, 459.7175pt x 284.06125pt>
+<images/solutionN25.png, id=30, 459.7175pt x 284.06125pt>
 File: images/solutionN25.png Graphic file (type png)
 
 <use images/solutionN25.png>
-Package pdftex.def Info: images/solutionN25.png used on input line 358.
+Package pdftex.def Info: images/solutionN25.png used on input line 363.
 (pdftex.def)             Requested size: 225.21626pt x 139.1652pt.
 
-<images/solutionErrorN25.png, id=40, 373.395pt x 239.89626pt>
+<images/solutionErrorN25.png, id=31, 361.35pt x 229.85875pt>
 File: images/solutionErrorN25.png Graphic file (type png)
 
 <use images/solutionErrorN25.png>
-Package pdftex.def Info: images/solutionErrorN25.png used on input line 363.
-(pdftex.def)             Requested size: 225.21626pt x 144.69658pt.
+Package pdftex.def Info: images/solutionErrorN25.png used on input line 368.
+(pdftex.def)             Requested size: 225.21626pt x 143.2615pt.
 
-<images/solutionN100.png, id=41, 458.71375pt x 286.06876pt>
+<images/solutionN100.png, id=32, 458.71375pt x 286.06876pt>
 File: images/solutionN100.png Graphic file (type png)
 
 <use images/solutionN100.png>
-Package pdftex.def Info: images/solutionN100.png used on input line 375.
+Package pdftex.def Info: images/solutionN100.png used on input line 380.
 (pdftex.def)             Requested size: 225.21626pt x 140.45427pt.
 
-<images/solutionErrorN100.png, id=42, 371.3875pt x 236.885pt>
+<images/solutionErrorN100.png, id=33, 361.35pt x 234.8775pt>
 File: images/solutionErrorN100.png Graphic file (type png)
 
 <use images/solutionErrorN100.png>
-Package pdftex.def Info: images/solutionErrorN100.png used on input line 380.
-(pdftex.def)             Requested size: 225.21626pt x 143.65382pt.
- [5 <./images/solutionN5.png> <./images/solutionErrorN5.png> <./images/solution
-N10.png> <./images/solutionErrorN10.png> <./images/solutionN25.png> <./images/s
-olutionErrorN25.png>] [6 <./images/solutionN100.png> <./images/solutionErrorN10
-0.png>] (./PoissonEqSolverReport.aux)
+Package pdftex.def Info: images/solutionErrorN100.png used on input line 385.
+(pdftex.def)             Requested size: 225.21626pt x 146.3895pt.
+ [3 <./images/cppThomasAlgorithm.png>]
+(./PoissonEqSolverReport.bbl) [4 <./images/cppPoissonSolverFast.png>] [5 <./ima
+ges/solutionN5.png> <./images/solutionErrorN5.png (PNG copy)> <./images/solutio
+nN10.png> <./images/solutionErrorN10.png (PNG copy)> <./images/solutionN25.png>
+ <./images/solutionErrorN25.png (PNG copy)>] [6 <./images/solutionN100.png> <./
+images/solutionErrorN100.png (PNG copy)>] (./PoissonEqSolverReport.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4610 strings out of 493089
- 66724 string characters out of 6134842
- 151094 words of memory out of 5000000
- 8012 multiletter control sequences out of 15000+600000
- 12741 words of font info for 50 fonts, out of 8000000 for 9000
+ 6213 strings out of 493089
+ 88161 string characters out of 6134842
+ 190351 words of memory out of 5000000
+ 9599 multiletter control sequences out of 15000+600000
+ 9699 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,9n,38p,957b,483s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,16n,38p,1057b,488s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><
 /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
@@ -659,17 +730,17 @@ usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
 sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr
 /local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/l
 ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
-al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local
-/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive
-/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/20
-15/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/201
-5/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on PoissonEqSolverReport.pdf (6 pages, 306738 bytes).
+al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/
+texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texliv
+e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2
+015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/201
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
+Output written on PoissonEqSolverReport.pdf (6 pages, 302321 bytes).
 PDF statistics:
- 104 PDF objects out of 1000 (max. 8388607)
+ 100 PDF objects out of 1000 (max. 8388607)
  60 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  51 words of extra memory for PDF output out of 10000 (max. 10000000)

@@ -6,7 +6,6 @@
 //  Copyright © 2016 Curtis Rau. All rights reserved.
 //
 
-#include <iostream>                 // Remove after debugging
 #include "linearTools.hpp"
 
 namespace linTools {

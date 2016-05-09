@@ -6,7 +6,7 @@
 //
 
 #include <iostream>             // For working with terminal output: std::cout?
-#include <fstream>              // for working with files.  Is this necessary?
+#include <fstream>              // for working with files.
 #include <new>                  // Is this necessary?
 #include <math.h>               /* exp squt */
 #include "linearTools.hpp"
@@ -20,6 +20,8 @@ double source (double x) {
 int main(int argc, const char* argv[]) {
     // The first argument should be N -- the number of points, including endpoints.
     // Using the flag "-plot" plots the results in the terminal.
+    
+    const clock_t;
     
     bool PLOT = false;
     bool SAVE = false;
@@ -50,7 +52,7 @@ int main(int argc, const char* argv[]) {
         // BEGINNING CODE COMMON TO ALL METHODS (DO NOT COMMENT OUT)
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------
-    const int N = 7;//std::stoi(argv[1]);          // takes the first argument, converts it to an integer, and stores it as "n".
+    const int N = 100000000;//std::stoi(argv[1]);          // takes the first argument, converts it to an integer, and stores it as "n".
                                                     // N is the number of points, including end points
     double L = 1.0;                                 // The length of the sample;
     
@@ -73,7 +75,7 @@ int main(int argc, const char* argv[]) {
         }
         f[N-1] = -source(N * h) * (h*h) - 0;
         
-        const clock_t begin_time = std::clock();
+        clock_t begin_time = std::clock();
         
         // Create the vectors representing the "A" matrix
         double* a = new double[N-1];                              // Could replace array with constant, but leaving it general for now
@@ -105,7 +107,7 @@ int main(int argc, const char* argv[]) {
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------
     if (METHOD == 2) {
-        double h = L / (N-1);                           // The step size;
+        double h = L / (N+1);                           // The step size;
         // Setup source vector "f"
         double* f = new double[N-2];
         f[0] = source(1*h);
@@ -114,7 +116,7 @@ int main(int argc, const char* argv[]) {
         }
         f[N-3] = source((N-2) * h);
         
-        const clock_t begin_time = std::clock();
+        clock_t begin_time = std::clock();
         linTools::poisonSolver1D(N, L, 0.0, 0.0, f, u);
         std::cout << "Total computation time [s] = " << float( clock () - begin_time ) /  CLOCKS_PER_SEC << "\r";
         
@@ -126,14 +128,14 @@ int main(int argc, const char* argv[]) {
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------
     if (METHOD == 3) {
-        double h = L / (N-1);                           // The step size;
+        double h = L / (N+1);                           // The step size;
         // Setup source vector "f"
         double* f = new double[N-2];
         for (int i = 0; i < N-2; i++) {
             f[i] = source((i+1) * h);
         }
         
-        const clock_t begin_time = std::clock();
+        clock_t begin_time = std::clock();
         linTools::poisonSolverDirichletBC1D(N, L, f, u);
         std::cout << "Total computation time [s] = " << float( clock () - begin_time ) /  CLOCKS_PER_SEC << "\r";
         
@@ -144,7 +146,7 @@ int main(int argc, const char* argv[]) {
         // CODE FOR RUDIMENTARY PLOTTER
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------
-    if (PLOT) {              // If the flag "-plot" is passed to main() and is in the argument vector.
+    if (false) {              // If the flag "-plot" is passed to main() and is in the argument vector.
 
         for (int i = 0; i < N; i = i+1) {           // Plot the result.  The x-scale is controlled by "i = i + 1"
             double num = 1000 * u[i];               // The y-scale is controlled by "1000 * u[i]"

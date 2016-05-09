@@ -1,4 +1,3 @@
-//
 //  linearTools.hpp
 //  project1
 //
@@ -11,7 +10,7 @@
 
 #include <stdio.h>
 
-#endif /* linearTools_hpp */
+#endif
 
 // Declare the public class "linTools" which will have functions for solving linear equations
 namespace linTools {
